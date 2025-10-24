@@ -7,6 +7,7 @@
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
     <DocumentationFile>bin\$(Configuration)\netstandard1.1\Octokit.GraphQL.Core.xml</DocumentationFile>
     <LangVersion>7.2</LangVersion>
+    <NoWarn>CS1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" />
