@@ -63,10 +63,18 @@ namespace Octokit.GraphQL.Core.Deserializers
 
         private Exception DeserializeException(JToken error)
         {
-            return new ResponseDeserializerException(
-                (string)error["message"],
-                (int)error["locations"][0]["line"],
-                (int)error["locations"][0]["column"]);
+            var message = (string)error["message"];
+            var locations = error["locations"] as JArray;
+
+            if (locations != null && locations.Count > 0)
+            {
+                return new ResponseDeserializerException(
+                    message,
+                    (int)locations[0]["line"],
+                    (int)locations[0]["column"]);
+            }
+
+            return new ResponseDeserializerException(message, 0, 0);
         }
     }
 }
