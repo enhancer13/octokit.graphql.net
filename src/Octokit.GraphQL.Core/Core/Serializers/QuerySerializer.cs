@@ -247,13 +247,20 @@ namespace Octokit.GraphQL.Core.Serializers
                     //Cache Hit
                 }
 
-                for (var index = 0; index < properties.Length; index++)
-                {
-                    var property = properties[index];
+                var written = false;
 
-                    if (index == 0)
+                foreach (var property in properties)
+                {
+                    var propertyValue = property.Item2.Invoke(value, null);
+                    if (propertyValue == null)
+                    {
+                        continue;
+                    }
+
+                    if (!written)
                     {
                         OpenBrace(builder);
+                        written = true;
                     }
                     else
                     {
@@ -261,12 +268,12 @@ namespace Octokit.GraphQL.Core.Serializers
                     }
 
                     builder.Append(property.Item1.LowerFirstCharacter()).Append(colon);
-                    SerializeValue(builder, property.Item2.Invoke(value, null));
+                    SerializeValue(builder, propertyValue);
+                }
 
-                    if (index + 1 == properties.Length)
-                    {
-                        CloseBrace(builder);
-                    }
+                if (written)
+                {
+                    CloseBrace(builder);
                 }
             }
         }
