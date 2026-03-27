@@ -1,0 +1,19 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="AgileObjects.ReadableExpressions" Version="1.12.1" />
+    <PackageVersion Include="Codecov" Version="1.10.0" />
+    <PackageVersion Include="coverlet.msbuild" Version="2.8.1" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.Extensions.Http.Polly" Version="2.1.1" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageVersion Include="Octokit" Version="0.29.0" />
+    <PackageVersion Include="System.ValueTuple" Version="4.4.0" />
+    <PackageVersion Include="xunit" Version="2.4.1" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.4.1" />
+  </ItemGroup>
+</Project>
