@@ -58,9 +58,14 @@ namespace Octokit.GraphQL.Core.Builders
 
             public static TResult Switch<TResult>(JToken source, IDictionary<string, Func<JToken, TResult>> selectors)
             {
+                if (source == null || source.Type == JTokenType.Null)
+                {
+                    return default;
+                }
+
                 var typename = (string)source["__typename"];
 
-                if (selectors.TryGetValue(typename, out var selector))
+                if (typename != null && selectors.TryGetValue(typename, out var selector))
                 {
                     return selector(source);
                 }
